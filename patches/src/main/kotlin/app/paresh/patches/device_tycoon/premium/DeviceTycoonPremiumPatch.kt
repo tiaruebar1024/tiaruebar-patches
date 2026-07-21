@@ -8,21 +8,32 @@ import app.paresh.patches.device_tycoon.shared.Constants.COMPATIBILITY_DEVICE_TY
  * All game logic — including IAP and ad handling — lives in JavaScript assets,
  * not Java bytecode. Both patches modify assets/www/scripts/main.js directly.
  *
- * Target 1 (Remove Ads bypass):
- *   The mobileiap DOM handler class sends a "product-owned" event to the game
- *   runtime via _ToProductInfo(). We patch _ToProductInfo() to always return
- *   owned=true for the "remove_ads" product ID.
+ * IAP products:
+ *   Non-consumable: remove_ads
+ *   Consumable:     get_1000_researchcoins_v2, get_3000_researchcoins,
+ *                   get_5000_researchcoins, get_300m_budget, get_750m_budget,
+ *                   get_1b_budget
  *
- * Target 2 (Ad removal):
- *   The advert DOM handler class picks which ad backend to use via _GetApi().
- *   On a real Cordova device it returns C3MobileAdvertsAPI.real (real AdMob).
- *   We patch _GetApi() to always return C3MobileAdvertsAPI.fake — a no-op stub
- *   that immediately reports success for all ad calls without showing any ads.
+ * Patch 1 — Remove Ads bypass (non-consumable):
+ *   _ToProductInfo() reports owned=true for remove_ads so the game's
+ *   ProductOwned("remove_ads") condition always passes.
+ *
+ * Patch 2 — Purchase bypass (all products):
+ *   _OnPurchase(productId) normally calls store.order() to start a real Google
+ *   Play purchase flow. We replace it so it skips the store entirely and
+ *   immediately calls _OnProductOwned() + _OnPurchaseSuccess(), exactly as if
+ *   the purchase completed successfully. This fires the game's OnProductOwned /
+ *   OnAnyProductOwned triggers the moment the player taps Buy — granting coins,
+ *   budget, or ad removal instantly with no real payment.
+ *
+ * Patch 3 — Ad removal:
+ *   _GetApi() always returns C3MobileAdvertsAPI.fake — a no-op stub that reports
+ *   success instantly without showing any real ads.
  */
 @Suppress("unused")
 val deviceTycoonPremiumPatch = rawResourcePatch(
     name = "Devices Tycoon Premium",
-    description = "Unlocks remove ads purchase and disables all ads in Devices Tycoon."
+    description = "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon."
 ) {
     compatibleWith(COMPATIBILITY_DEVICE_TYCOON)
 
@@ -30,26 +41,43 @@ val deviceTycoonPremiumPatch = rawResourcePatch(
         val mainJs = get("assets/www/scripts/main.js")
         var content = mainJs.readText()
 
-        // --- Patch 1: Remove Ads IAP bypass ---
-        // _ToProductInfo() in the mobileiap DOM handler converts a CdvPurchase product
-        // object into a plain object sent to the game runtime. We make it report
-        // owned=true for the "remove_ads" product regardless of actual purchase state.
+        // --- Patch 1: Remove Ads IAP bypass (non-consumable) ---
+        // Force owned=true for remove_ads in _ToProductInfo() so the game's
+        // ProductOwned("remove_ads") condition always evaluates to true.
         val iapOriginal = "owned:!!e.owned,canPurchase:!!e.canPurchase"
         val iapPatched  = """owned:e.id==="remove_ads"?!0:!!e.owned,canPurchase:!!e.canPurchase"""
         check(content.contains(iapOriginal)) {
-            "IAP patch: could not find target string in main.js — app may have updated"
+            "Patch 1: could not find _ToProductInfo target in main.js — app may have updated"
         }
         content = content.replace(iapOriginal, iapPatched)
 
-        // --- Patch 2: Ad removal ---
-        // _GetApi() in the advert DOM handler selects the ad backend at runtime.
-        // Original: returns C3MobileAdvertsAPI.real when running on a Cordova device.
-        // Patched:  always returns C3MobileAdvertsAPI.fake (no-op stub that reports
-        //           success instantly and never shows real ads).
+        // --- Patch 2: Purchase bypass (all products) ---
+        // Original _OnPurchase calls store.order() which triggers a real Play Store
+        // purchase dialog. We replace the entire method body to skip the store and
+        // immediately fire _OnProductOwned() + _OnPurchaseSuccess() on the product,
+        // which is exactly what the real flow does after a successful transaction.
+        // The player taps Buy → instant success, no payment required.
+        //
+        // We match on the stable prefix up to store.order() and the stable suffix,
+        // avoiding the backtick template literal inside console.log which is
+        // awkward to embed in a Kotlin string literal.
+        val purchaseOrderCall = "this._store.order(t.getOffer()).then((e=>{e&&e.isError?this._OnPurchaseFail(t,e):this._OnPurchaseSuccess(t)}))"
+        check(content.contains(purchaseOrderCall)) {
+            "Patch 2: could not find store.order() call in main.js — app may have updated"
+        }
+        // Replace just the store.order(...) call with a direct success — the surrounding
+        // if(t) block stays intact so the product lookup still runs first.
+        content = content.replace(
+            purchaseOrderCall,
+            "this._OnProductOwned(t),this._OnPurchaseSuccess(t)"
+        )
+
+        // --- Patch 3: Ad removal ---
+        // Always return the fake/stub ad API so no real ads are loaded or shown.
         val adOriginal = "return self.cordova?self.C3MobileAdvertsAPI.real:self.cordova||\$t?\$t?self.C3MobileAdvertsAPI.fake:void 0:self.C3MobileAdvertsAPI.web"
         val adPatched  = "return self.C3MobileAdvertsAPI.fake"
         check(content.contains(adOriginal)) {
-            "Ad patch: could not find _GetApi() target string in main.js — app may have updated"
+            "Patch 3: could not find _GetApi() target in main.js — app may have updated"
         }
         content = content.replace(adOriginal, adPatched)
 
