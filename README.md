@@ -4,9 +4,7 @@ Template repository for Morphe Patches.
 
 ## ❓ About
 
-Patches for apps I like.
-
-TODO: Update this about section with a brief introduction/summary about this repo and what it offers.
+Made COMPLETELY with AI, sorry
 
 ## 🩹 Patches list
 
