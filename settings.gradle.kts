@@ -1,4 +1,4 @@
-rootProject.name = "paresh-patches"
+rootProject.name = "tiaruebar-patches"
 
 pluginManagement {
     repositories {

@@ -1,4 +1,4 @@
-package app.paresh.patches.mysterium.shared
+package app.tiaruebar.patches.mysterium.shared
 
 import app.morphe.patcher.patch.ApkFileType
 import app.morphe.patcher.patch.AppTarget

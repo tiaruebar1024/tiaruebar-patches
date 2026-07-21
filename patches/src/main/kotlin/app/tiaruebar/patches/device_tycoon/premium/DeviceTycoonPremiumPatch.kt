@@ -1,7 +1,7 @@
-package app.paresh.patches.device_tycoon.premium
+package app.tiaruebar.patches.device_tycoon.premium
 
 import app.morphe.patcher.patch.rawResourcePatch
-import app.paresh.patches.device_tycoon.shared.Constants.COMPATIBILITY_DEVICE_TYCOON
+import app.tiaruebar.patches.device_tycoon.shared.Constants.COMPATIBILITY_DEVICE_TYCOON
 
 /**
  * Devices Tycoon is a Cordova hybrid app (Construct 3 game engine).
@@ -20,11 +20,10 @@ import app.paresh.patches.device_tycoon.shared.Constants.COMPATIBILITY_DEVICE_TY
  *
  * Patch 2 — Purchase bypass (all products):
  *   _OnPurchase(productId) normally calls store.order() to start a real Google
- *   Play purchase flow. We replace it so it skips the store entirely and
- *   immediately calls _OnProductOwned() + _OnPurchaseSuccess(), exactly as if
- *   the purchase completed successfully. This fires the game's OnProductOwned /
- *   OnAnyProductOwned triggers the moment the player taps Buy — granting coins,
- *   budget, or ad removal instantly with no real payment.
+ *   Play purchase flow. We replace it to skip the store and immediately fire
+ *   _OnProductOwned() + _OnPurchaseSuccess() + _OnTransactionFinished(), which
+ *   is the exact sequence a real completed transaction produces. This clears the
+ *   loading spinner on consumables and grants the reward instantly on tap.
  *
  * Patch 3 — Ad removal:
  *   _GetApi() always returns C3MobileAdvertsAPI.fake — a no-op stub that reports
@@ -53,23 +52,24 @@ val deviceTycoonPremiumPatch = rawResourcePatch(
 
         // --- Patch 2: Purchase bypass (all products) ---
         // Original _OnPurchase calls store.order() which triggers a real Play Store
-        // purchase dialog. We replace the entire method body to skip the store and
-        // immediately fire _OnProductOwned() + _OnPurchaseSuccess() on the product,
-        // which is exactly what the real flow does after a successful transaction.
-        // The player taps Buy → instant success, no payment required.
+        // purchase dialog. We replace just the store.order() call to skip the store
+        // and immediately simulate a fully completed transaction.
         //
-        // We match on the stable prefix up to store.order() and the stable suffix,
-        // avoiding the backtick template literal inside console.log which is
-        // awkward to embed in a Kotlin string literal.
+        // The full success sequence the game expects:
+        //   1. _OnProductOwned(product)      → fires OnProductOwned trigger (grants reward)
+        //   2. _OnPurchaseSuccess(product)   → posts "purchase-success" to runtime
+        //   3. _OnTransactionFinished({...}) → posts "transaction-finished" to runtime,
+        //                                      which clears the loading spinner for consumables
+        //
+        // Without step 3, consumables get stuck on a loading spinner because the game
+        // waits for "transaction-finished" before resetting the purchase UI.
         val purchaseOrderCall = "this._store.order(t.getOffer()).then((e=>{e&&e.isError?this._OnPurchaseFail(t,e):this._OnPurchaseSuccess(t)}))"
         check(content.contains(purchaseOrderCall)) {
             "Patch 2: could not find store.order() call in main.js — app may have updated"
         }
-        // Replace just the store.order(...) call with a direct success — the surrounding
-        // if(t) block stays intact so the product lookup still runs first.
         content = content.replace(
             purchaseOrderCall,
-            "this._OnProductOwned(t),this._OnPurchaseSuccess(t)"
+            "this._OnProductOwned(t),this._OnPurchaseSuccess(t),this._OnTransactionFinished({transactionId:'patched',products:[t]})"
         )
 
         // --- Patch 3: Ad removal ---

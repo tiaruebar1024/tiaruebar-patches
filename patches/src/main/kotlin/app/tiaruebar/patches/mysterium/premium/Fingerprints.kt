@@ -1,4 +1,4 @@
-package app.paresh.patches.mysterium.premium
+package app.tiaruebar.patches.mysterium.premium
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.literal

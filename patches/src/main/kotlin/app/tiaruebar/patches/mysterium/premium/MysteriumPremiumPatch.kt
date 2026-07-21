@@ -1,8 +1,8 @@
-package app.paresh.patches.mysterium.premium
+package app.tiaruebar.patches.mysterium.premium
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.paresh.patches.mysterium.shared.Constants.COMPATIBILITY_MYSTERIUM
+import app.tiaruebar.patches.mysterium.shared.Constants.COMPATIBILITY_MYSTERIUM
 
 @Suppress("unused")
 val mysteriumPremiumPatch = bytecodePatch(
