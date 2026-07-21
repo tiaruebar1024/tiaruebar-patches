@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Devices Tycoon Premium",
-      "description": "Unlocks remove ads purchase and disables all ads in Devices Tycoon.",
+      "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
