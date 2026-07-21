@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.0...v1.1.1) (2026-07-21)
+
+### 🐛 Bug Fixes
+
+* update patch bundle metadata to tiaruebar-patches ([d6ac9ff](https://github.com/tiaruebar1024/tiaruebar-patches/commit/d6ac9ff7cb6bb1320a246ee45704170ea901e6c8))
+
 ## [1.1.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.0.0...v1.1.0) (2026-07-21)
 
 ### ✨ New Features

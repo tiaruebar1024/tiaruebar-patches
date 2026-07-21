@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-07-21T21:09:31",
-  "description": "## [1.1.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.0.0...v1.1.0) (2026-07-21)\n\n### ✨ New Features\n\n* add consumable IAP bypass for Device Tycoon (coins + budget) ([b2b702c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/b2b702cdda00695feaa914d33208e5cce15027c6))",
-  "download_url": "https://github.com/tiaruebar1024/tiaruebar-patches/releases/download/v1.1.0/patches-1.1.0.mpp",
+  "created_at": "2026-07-21T22:11:59",
+  "description": "## [1.1.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.0...v1.1.1) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* update patch bundle metadata to tiaruebar-patches ([d6ac9ff](https://github.com/tiaruebar1024/tiaruebar-patches/commit/d6ac9ff7cb6bb1320a246ee45704170ea901e6c8))",
+  "download_url": "https://github.com/tiaruebar1024/tiaruebar-patches/releases/download/v1.1.1/patches-1.1.1.mpp",
   "signature_download_url": "",
-  "version": "1.1.0"
+  "version": "1.1.1"
 }
