@@ -1,4 +1,4 @@
-package app.paresh.patches.device_tycoon.shared
+package app.tiaruebar.patches.device_tycoon.shared
 
 import app.morphe.patcher.patch.ApkFileType
 import app.morphe.patcher.patch.AppTarget
