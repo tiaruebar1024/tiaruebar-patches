@@ -1,3 +1,9 @@
+## [1.2.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.1...v1.2.0-dev.1) (2026-07-22)
+
+### ✨ New Features
+
+* remove mysterium vpn patches ([73e044c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/73e044ce3b41368e4edd009d69b01f63c68ed3e9))
+
 ## [1.1.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.0...v1.1.1) (2026-07-21)
 
 ### 🐛 Bug Fixes
