@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.3.1-dev.1",
   "patches": [
     {
       "name": "Devices Tycoon Premium",
@@ -31,6 +31,32 @@
     {
       "name": "Eatventure IAP",
       "description": "Makes all in-app purchases immediately succeed, for both consumables and permanent items.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.hwqgrhhjfd.idlefastfood",
+          "name": "Eatventure",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF6644",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.52.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Eatventure Play Integrity Bypass",
+      "description": "Bypasses the Play Integrity / Firebase App Check signature verification that blocks patched APKs.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

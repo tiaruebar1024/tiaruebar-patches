@@ -1,3 +1,9 @@
+## [1.3.1-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.0...v1.3.1-dev.1) (2026-07-22)
+
+### 🐛 Bug Fixes
+
+* add Play Integrity bypass for Eatventure ([1133e31](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1133e31c584a28d6b9b17b05e95fa76ee07edddd))
+
 ## [1.3.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0) (2026-07-22)
 
 ### ✨ New Features
