@@ -7,7 +7,7 @@ Made COMPLETELY with AI, sorry
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.3.0](https://github.com/tiaruebar1024/tiaruebar-patches/releases/tag/v1.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
+> **[v1.3.1-dev.2](https://github.com/tiaruebar1024/tiaruebar-patches/releases/tag/v1.3.1-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
 <details open>
 <summary>📦 Devices Tycoon&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -24,7 +24,7 @@ Made COMPLETELY with AI, sorry
 </details>
 
 <details open>
-<summary>📦 Eatventure&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<summary>📦 Eatventure&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -35,6 +35,8 @@ Made COMPLETELY with AI, sorry
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Eatventure IAP](#eatventure-iap) | Makes all in-app purchases immediately succeed, for both consumables and permanent items. |  |
+| [Eatventure Play Integrity Bypass](#eatventure-play-integrity-bypass) | Bypasses the Play Integrity / Firebase App Check signature verification that blocks patched APKs. |  |
+| [Eatventure Signature Spoof](#eatventure-signature-spoof) | Spoofs the APK signing certificate so Google Play Billing accepts the re-signed APK. |  |
 
 </details>
 

@@ -1,3 +1,15 @@
+## [1.3.1-dev.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.1-dev.1...v1.3.1-dev.2) (2026-07-22)
+
+### 🐛 Bug Fixes
+
+* add signature spoof for Eatventure billing ([6759612](https://github.com/tiaruebar1024/tiaruebar-patches/commit/67596122a98ae5ae25e7594d429a092c7b93926b))
+
+## [1.3.1-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.0...v1.3.1-dev.1) (2026-07-22)
+
+### 🐛 Bug Fixes
+
+* add Play Integrity bypass for Eatventure ([1133e31](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1133e31c584a28d6b9b17b05e95fa76ee07edddd))
+
 ## [1.3.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0) (2026-07-22)
 
 ### ✨ New Features
