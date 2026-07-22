@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-07-22T14:47:40",
-  "description": "## [1.2.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.1...v1.2.0) (2026-07-22)\n\n### ✨ New Features\n\n* remove mysterium vpn patches ([73e044c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/73e044ce3b41368e4edd009d69b01f63c68ed3e9))",
-  "download_url": "https://github.com/tiaruebar1024/tiaruebar-patches/releases/download/v1.2.0/patches-1.2.0.mpp",
+  "created_at": "2026-07-22T17:20:30",
+  "description": "## [1.3.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-07-22)\n\n### ✨ New Features\n\n* add Eatventure IAP patch ([1da0d26](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1da0d268e74f3f1cb41c7c9d6a6a5adcfccc9dc0))",
+  "download_url": "https://github.com/tiaruebar1024/tiaruebar-patches/releases/download/v1.3.0-dev.1/patches-1.3.0-dev.1.mpp",
   "signature_download_url": "",
-  "version": "1.2.0"
+  "version": "1.3.0-dev.1"
 }
