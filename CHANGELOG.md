@@ -1,3 +1,13 @@
+## [1.3.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0) (2026-07-22)
+
+### ✨ New Features
+
+* add Eatventure IAP patch ([1da0d26](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1da0d268e74f3f1cb41c7c9d6a6a5adcfccc9dc0))
+
+### 🚀 Updated App Support
+
+* add support for eatventure ([eb831c8](https://github.com/tiaruebar1024/tiaruebar-patches/commit/eb831c863c2a4814fe04d52df76be576e6d1c9a3))
+
 ## [1.3.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-07-22)
 
 ### ✨ New Features
