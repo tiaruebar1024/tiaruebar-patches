@@ -1,3 +1,9 @@
+## [1.3.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.1...v1.3.2) (2026-07-22)
+
+### 🚀 Updated App Support
+
+* remove apps actually ([8fa0ade](https://github.com/tiaruebar1024/tiaruebar-patches/commit/8fa0adefcb16de7b66ab699af1f21359439219c6))
+
 ## [1.3.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.0...v1.3.1) (2026-07-22)
 
 ### 🐛 Bug Fixes

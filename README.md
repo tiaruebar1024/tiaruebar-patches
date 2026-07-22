@@ -7,7 +7,7 @@ Made COMPLETELY with AI, sorry
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.3.1](https://github.com/tiaruebar1024/tiaruebar-patches/releases/tag/v1.3.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
+> **[v1.3.2](https://github.com/tiaruebar1024/tiaruebar-patches/releases/tag/v1.3.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
 <details open>
 <summary>📦 Devices Tycoon&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -20,21 +20,6 @@ Made COMPLETELY with AI, sorry
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Devices Tycoon Premium](#devices-tycoon-premium) | Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon. |  |
-
-</details>
-
-<details open>
-<summary>📦 Eatventure&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 1.52.3 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Eatventure IAP](#eatventure-iap) | Skips the Google Play purchase dialog and auto-succeeds all purchases. |  |
 
 </details>
 
