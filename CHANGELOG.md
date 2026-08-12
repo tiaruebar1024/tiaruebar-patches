@@ -1,0 +1,10 @@
+## [1.3.3-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.2...v1.3.3-dev.1) (2026-08-12)
+
+### 🐛 Bug Fixes
+
+* use correct patcher APIs for Temp Mail patches ([3359b5c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/3359b5c93d949692768cc710f51a07c977a126fb))
+
+### 🚀 Updated App Support
+
+* I'm sorry changelog ([bd36295](https://github.com/tiaruebar1024/tiaruebar-patches/commit/bd362955df4547f1d5ce3197d2545d12ae5e3f7e))
+* placeholder fully ([b44e933](https://github.com/tiaruebar1024/tiaruebar-patches/commit/b44e933399bc70aa275f26a1b3ede7c068d1d60a))
