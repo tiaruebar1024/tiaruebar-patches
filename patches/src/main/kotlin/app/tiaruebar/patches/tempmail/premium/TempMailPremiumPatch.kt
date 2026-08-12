@@ -7,7 +7,6 @@ import app.tiaruebar.patches.tempmail.shared.Constants.COMPATIBILITY_TEMP_MAIL
 import app.tiaruebar.patches.tempmail.shared.IsFreeUserFingerprint
 import app.tiaruebar.patches.tempmail.shared.ProcessLicenseResponseFingerprint
 import app.tiaruebar.patches.tempmail.shared.SignatureCheckFingerprint
-import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val tempMailPremiumPatch = bytecodePatch(
@@ -17,13 +16,16 @@ val tempMailPremiumPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_TEMP_MAIL)
 
     execute {
-        // Make the app always believe the user is premium (SID is set).
-        // AppUtils.y() returning false means "user is NOT free" = premium.
-        IsFreeUserFingerprint.method.returnEarly(false)
+        // AppUtils.y() returns true when SID is empty (= free user).
+        // Returning false makes the app always believe the user is premium.
+        IsFreeUserFingerprint.method.addInstructions(0, """
+            const/4 v0, 0x0
+            return v0
+        """)
 
-        // Bypass the local Pairip signature check so the re-signed APK
+        // Skip the local Pairip signature check so the re-signed APK
         // does not throw SignatureTamperedException on startup.
-        SignatureCheckFingerprint.method.returnEarly()
+        SignatureCheckFingerprint.method.addInstructions(0, "return-void")
 
         // Force the Pairip Play Integrity server response code to 0 (LICENSED)
         // so the license check always succeeds without showing the paywall.
