@@ -3,6 +3,7 @@ package app.tiaruebar.patches.tempmail.premium
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.tiaruebar.patches.tempmail.shared.AdsIntegrityGateRefreshFingerprint
 import app.tiaruebar.patches.tempmail.shared.Constants.COMPATIBILITY_TEMP_MAIL
 import app.tiaruebar.patches.tempmail.shared.IsFreeUserFingerprint
 import app.tiaruebar.patches.tempmail.shared.ProcessLicenseResponseFingerprint
@@ -35,5 +36,9 @@ val tempMailPremiumPatch = bytecodePatch(
         // Block Play Store redirect — even if server returns NOT_LICENSED (responseCode 2),
         // the paywall activity never launches. Defense-in-depth for signature mismatch.
         StartPaywallActivityFingerprint.method.addInstructions(0, "return-void")
+
+        // Skip Play Integrity check at app startup — prevents "Get this app from Play"
+        // redirect when app detects tampering. This is separate from Pairip license check.
+        AdsIntegrityGateRefreshFingerprint.method.addInstructions(0, "return-void")
     }
 }

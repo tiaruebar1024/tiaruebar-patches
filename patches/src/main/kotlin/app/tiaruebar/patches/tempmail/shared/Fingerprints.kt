@@ -2,8 +2,10 @@ package app.tiaruebar.patches.tempmail.shared
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * AppUtils.y(Context) — the universal "is free user" gate.
@@ -94,5 +96,35 @@ object StartPaywallActivityFingerprint : Fingerprint(
             parameters = listOf("Ljava/lang/String;", "Landroid/os/Parcelable;"),
             returnType = "Landroid/content/Intent;"
         )
+    )
+)
+
+/**
+ * AdsIntegrityGate.g() — Play Integrity check refresh at app startup.
+ *
+ * Called from ApplicationClass.onCreate() to launch a coroutine that checks
+ * Play Integrity API. If the check fails (app is tampered/re-signed), the app
+ * redirects to Play Store with "Get this app from Play" message.
+ *
+ * Blocking this method prevents the integrity check from running at all.
+ *
+ * Non-obfuscated class — matched by exact name.
+ * Smali: classes.dex → com/tempmail/data/data_source/integrity/AdsIntegrityGate.smali
+ */
+object AdsIntegrityGateRefreshFingerprint : Fingerprint(
+    definingClass = "Lcom/tempmail/data/data_source/integrity/AdsIntegrityGate;",
+    name = "g",
+    returnType = "V",
+    parameters = emptyList(),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    filters = listOf(
+        // Calls Dispatchers.b() to get IO dispatcher
+        methodCall(
+            definingClass = "Lkotlinx/coroutines/Dispatchers;",
+            name = "b",
+            returnType = "Lkotlinx/coroutines/CoroutineDispatcher;"
+        ),
+        // Creates new coroutine instance
+        opcode(Opcode.NEW_INSTANCE)
     )
 )
