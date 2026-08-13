@@ -1,3 +1,9 @@
+## [1.4.0-dev.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-08-13)
+
+### ✨ New Features
+
+* add Play Integrity check bypass to Temp Mail (fixes startup redirect) ([1d5cdcf](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1d5cdcf9a1048325f2886dd93c58ac18e4326e40))
+
 ## [1.4.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.3-dev.1...v1.4.0-dev.1) (2026-08-13)
 
 ### ✨ New Features
