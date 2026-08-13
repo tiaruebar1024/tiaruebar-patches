@@ -1,3 +1,9 @@
+## [1.4.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.3-dev.1...v1.4.0-dev.1) (2026-08-13)
+
+### ✨ New Features
+
+* add Play Store redirect bypass to Temp Mail premium patch ([b941a78](https://github.com/tiaruebar1024/tiaruebar-patches/commit/b941a78dd4a494eb373e11683da6a8d370cd2f8a))
+
 ## [1.3.3-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.2...v1.3.3-dev.1) (2026-08-12)
 
 ### 🐛 Bug Fixes
