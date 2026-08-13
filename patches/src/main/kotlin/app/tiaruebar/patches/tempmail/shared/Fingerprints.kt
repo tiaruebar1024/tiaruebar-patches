@@ -2,6 +2,7 @@ package app.tiaruebar.patches.tempmail.shared
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
@@ -61,4 +62,37 @@ object ProcessLicenseResponseFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "Landroid/os/Bundle;"),
     accessFlags = listOf(AccessFlags.PRIVATE),
+)
+
+/**
+ * LicenseClient.startPaywallActivity(PendingIntent) — launches Play Store paywall.
+ *
+ * Called by processResponse() when responseCode == 2 (NOT_LICENSED). Even though
+ * we patch processResponse() to force responseCode to 0, the server-side Pairip
+ * check still returns NOT_LICENSED due to signature mismatch, which triggers this.
+ *
+ * Blocking this method prevents the Play Store "not official app" redirect.
+ *
+ * Smali: classes2.dex → com/pairip/licensecheck/LicenseClient.smali
+ */
+object StartPaywallActivityFingerprint : Fingerprint(
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PRIVATE),
+    parameters = listOf("Landroid/app/PendingIntent;"),
+    filters = listOf(
+        // Calls createCloseAppIntentOrExitIfAppInBackground()
+        methodCall(
+            definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+            name = "createCloseAppIntentOrExitIfAppInBackground",
+            returnType = "Landroid/content/Intent;"
+        ),
+        // Puts "paywallintent" extra
+        string("paywallintent"),
+        methodCall(
+            definingClass = "Landroid/content/Intent;",
+            name = "putExtra",
+            parameters = listOf("Ljava/lang/String;", "Landroid/os/Parcelable;"),
+            returnType = "Landroid/content/Intent;"
+        )
+    )
 )

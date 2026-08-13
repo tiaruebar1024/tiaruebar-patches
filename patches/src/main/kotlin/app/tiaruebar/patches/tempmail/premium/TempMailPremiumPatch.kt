@@ -7,6 +7,7 @@ import app.tiaruebar.patches.tempmail.shared.Constants.COMPATIBILITY_TEMP_MAIL
 import app.tiaruebar.patches.tempmail.shared.IsFreeUserFingerprint
 import app.tiaruebar.patches.tempmail.shared.ProcessLicenseResponseFingerprint
 import app.tiaruebar.patches.tempmail.shared.SignatureCheckFingerprint
+import app.tiaruebar.patches.tempmail.shared.StartPaywallActivityFingerprint
 
 @Suppress("unused")
 val tempMailPremiumPatch = bytecodePatch(
@@ -30,5 +31,9 @@ val tempMailPremiumPatch = bytecodePatch(
         // Force the Pairip Play Integrity server response code to 0 (LICENSED)
         // so the license check always succeeds without showing the paywall.
         ProcessLicenseResponseFingerprint.method.addInstruction(0, "const/4 p1, 0x0")
+
+        // Block Play Store redirect — even if server returns NOT_LICENSED (responseCode 2),
+        // the paywall activity never launches. Defense-in-depth for signature mismatch.
+        StartPaywallActivityFingerprint.method.addInstructions(0, "return-void")
     }
 }
