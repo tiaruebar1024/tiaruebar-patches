@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-08-13T11:01:03",
-  "description": "## [1.4.0-dev.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-08-13)\n\n### ✨ New Features\n\n* add Play Integrity check bypass to Temp Mail (fixes startup redirect) ([1d5cdcf](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1d5cdcf9a1048325f2886dd93c58ac18e4326e40))",
-  "download_url": "https://github.com/tiaruebar1024/tiaruebar-patches/releases/download/v1.4.0-dev.2/patches-1.4.0-dev.2.mpp",
+  "created_at": "2026-08-16T11:13:07",
+  "description": "## [1.4.0-dev.3](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2026-08-16)\n\n### 🐛 Bug Fixes\n\n* remove temp mail, has quite good pairip, didn't figure out how to bypass it ([18d5302](https://github.com/tiaruebar1024/tiaruebar-patches/commit/18d53021fe2255957e9525f9a1ebf1d932276102))",
+  "download_url": "https://github.com/tiaruebar1024/tiaruebar-patches/releases/download/v1.4.0-dev.3/patches-1.4.0-dev.3.mpp",
   "signature_download_url": "",
-  "version": "1.4.0-dev.2"
+  "version": "1.4.0-dev.3"
 }

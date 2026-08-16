@@ -1,3 +1,9 @@
+## [1.4.0-dev.3](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2026-08-16)
+
+### 🐛 Bug Fixes
+
+* remove temp mail, has quite good pairip, didn't figure out how to bypass it ([18d5302](https://github.com/tiaruebar1024/tiaruebar-patches/commit/18d53021fe2255957e9525f9a1ebf1d932276102))
+
 ## [1.4.0-dev.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-08-13)
 
 ### ✨ New Features
