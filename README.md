@@ -7,7 +7,24 @@ Made COMPLETELY with AI, sorry
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0](https://github.com/tiaruebar1024/tiaruebar-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+> **[v1.5.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/releases/tag/v1.5.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+<details open>
+<summary>📦 BitLife&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.24.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [BitLife Ad Removal](#bitlife-ad-removal) | Removes ads from BitLife by disabling ad loading and display methods. |  |
+| [BitLife Pairip Bypass](#bitlife-pairip-bypass) | Bypasses Google Play Integrity (Pairip) license checks in BitLife. |  |
+| [BitLife Premium](#bitlife-premium) | Unlocks all premium features, Bitizenship, God Mode, and expansions using native ARM64 hex patching of IL2CPP methods. |  |
+
+</details>
+
 <details open>
 <summary>📦 Devices Tycoon&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
